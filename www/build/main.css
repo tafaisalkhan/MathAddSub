@@ -25206,7 +25206,7 @@ td {
   text-align: center;
   vertical-align: middle;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  font-size: 70px;
+  font-size: 40px;
   cursor: pointer;
   background-color: wheat;
 }
@@ -25313,6 +25313,69 @@ td {
   height: 38%;
   -webkit-transform: translateX(208%);
   transform: translateX(208%);
+}
+
+.finalMark {
+  border: solid;
+  border-color: red;
+  position: absolute;
+  left: 60px;
+  top: 346px;
+  width: 207px;
+  height: 18%;
+  -webkit-transform: translateX(208%);
+  transform: translateX(208%);
+}
+
+.numberDiv {
+  background-color: #4a8cff;
+  position: absolute;
+  height: 15%;
+  top: 355px;
+  left: 70%;
+  width: 45px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 40px;
+  -webkit-transform: translateX(221%);
+  transform: translateX(221%);
+  cursor: pointer;
+}
+
+.numberDiv1 {
+  background-color: #4a8cff;
+  position: absolute;
+  height: 15%;
+  top: 355px;
+  left: 70%;
+  width: 45px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 40px;
+  -webkit-transform: translateX(221%);
+  transform: translateX(221%);
+  cursor: pointer;
+}
+
+.numberDiv2 {
+  background-color: #4a8cff;
+  position: absolute;
+  height: 15%;
+  top: 355px;
+  left: 70%;
+  width: 45px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 40px;
+  -webkit-transform: translateX(221%);
+  transform: translateX(221%);
+  cursor: pointer;
 }
 
 page-animation .markerDiv {

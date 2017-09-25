@@ -21,9 +21,24 @@
   
 
 		<ion-card-content style="text-align: -webkit-center">
+        <div [@resultDiv]="resultDivAimation" class="numberDiv" id="resultMovingDiv">
+            
+           </div> 
+
+           <div [@resultDiv1]="resultDivAimation1" class="numberDiv1" id="resultMovingDiv1">
+              
+             </div> 
+           
+             <div [@resultDiv2]="resultDivAimation2" class="numberDiv2" id="resultMovingDiv2">
+                
+               </div> 
         <div [@moveMarker]="marker" class="mark">
            
           </div> 
+
+          <div [@moveFinalMarker]="finalMarker" class="finalMark">
+              
+             </div> 
  <!-- <table [@explainerAnim]= "!loading" (@explainerAnim.done) = "explainerAnimDone($event)" (@explainerAnim.start) = "explainerAnimStarted($event)">-->
     <table class="firstTable">
         <tr >
@@ -52,19 +67,33 @@
 
 <table class="lastTable">
     <tr >
-      <td  id="0">
-        <div></div>
-      </td>
-      <td  id="res1"></td>
-      <td  id="res2"></td>
-      <td  id="res3"></td>
-    </tr>
+        <td  id="result1">
+          
+        </td>
+        <td  id="result2"></td>
+        <td  id="result3"></td>
+        <td  id="result4"></td>
+      </tr>
  </table>   
+
+
 
  <button ion-button (click)="first()" >First</button>
  <button ion-button (click)="sec()">Second</button>
  <button ion-button (click)="third()">Third</button>
  <button ion-button (click)="four()">Four</button>
+ <button ion-button (click)="five()">Five</button>
+ <button ion-button (click)="six()">Six</button>
+ <button ion-button (click)="seven()">Seven</button>
+ <button ion-button (click)="eight()">Eight</button>
+ <button ion-button (click)="night()">night</button>
+ <button ion-button (click)="ten()">Ten</button>
+ <button ion-button (click)="eleven()">Eleven</button>
+ <button ion-button (click)="twelve()">Twelev</button>
+ <button ion-button (click)="thirteen()">Thirteen</button>
+ <button ion-button (click)="fourTeen()">Fourteen</button>
+ <button ion-button (click)="fifTeen()">fifteen</button>
+ 
 
 <!--
 <table>

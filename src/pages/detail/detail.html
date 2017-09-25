@@ -24,17 +24,18 @@
         <ion-list>
           
             <ion-item style="font-size:small">
-                <ion-input type="text" placeholder="First Number"></ion-input>
+                <ion-input type="text" placeholder="First Number" maxlength="3" [(ngModel)]="inputNumber1"></ion-input>
             </ion-item>
           
             <ion-item style="font-size:small">
-                <ion-input type="text" placeholder="Second Number"></ion-input>
+                <ion-input type="text" placeholder="Second Number" maxlength="3" [(ngModel)]="inputNumber2"></ion-input>
             </ion-item>
 
           </ion-list>
 
           <div padding>
-           <button ion-button small (click)="showResult()" color="secondary" round>Calculate</button>
+           <button ion-button small (click)="showResult()" color="secondary" round *ngIf="result == 'hidden'">Calculate</button>
+           <button ion-button small (click)="reset()" color="primary" round *ngIf="result == 'shown'">Reset</button>
           </div>
       </ion-card-content>
     
@@ -49,16 +50,22 @@
         <ion-card-content>
           <ion-list>
             
-              <ion-item style="font-size:small">
-                  <ion-input type="text" placeholder="First Number"></ion-input>
+              <ion-item style="font-size:small" >
+                  <ion-input type="text" placeholder="First Number" maxlength="3" [(ngModel)]="inputNumber1" [disabled]="resultreadonly"></ion-input>
+                  
               </ion-item>
             
               <ion-item style="font-size:small">
-                  <ion-input type="text" placeholder="Second Number"></ion-input>
+                  <ion-input type="text" placeholder="Second Number" maxlength="3" [(ngModel)]="inputNumber2" [disabled]="resultreadonly"></ion-input>
               </ion-item>
   
+              <ion-item style="font-size:small">
+                  <ion-label fixed>Result</ion-label>
+                <ion-input type="text" placeholder="Second Number" maxlength="3" [(ngModel)]="completeResult" [disabled]="resultreadonly"></ion-input>
+            </ion-item>
             </ion-list>
             <div padding>
+                
                 <button ion-button small (click)="showInAnimation()" color="secondary" round>Show In Detail</button>
                </div>
         </ion-card-content>
