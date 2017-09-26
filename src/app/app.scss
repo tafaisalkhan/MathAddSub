@@ -141,9 +141,11 @@ td {
 	top: 144px;
 	width: 50px;
 	height: 38%;
-	transform: translateX(208%);
+	transform: translateX(408%);
 }
 .finalMark{
+	background-color: #4a8cff;
+	position: absolute;
 	 border: solid;
 	border-color: red;
 	position: absolute;
@@ -151,6 +153,10 @@ td {
     top: 346px;
     width: 207px;
 	height: 18%;
+	color: white;
+	font-family:  "Comic Sans MS", cursive, sans-serif;
+	font-size:  40px;
+	background-color: #4a8cff;
 	transform: translateX(208%);
 	
 }

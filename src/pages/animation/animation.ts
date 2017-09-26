@@ -104,6 +104,7 @@ import { Media, MediaObject } from '@ionic-native/media';
       state('firresultFinal' , style({ opacity: 1, display: 'block', width: '20%', left: '20%'})),
       state('firresultFirstCary' , style({ opacity: 1, display: 'block', left: '43%', width: '51px ', transform: 'translateX(21%)'})),
       state('firresultFirstCaryMove' , style({opacity: 1, display: 'block', left: '51%', width: '51px ',  transform: 'translateY(-381%)'})),
+      state('final' , style({ opacity: 0, display: 'block', width: '50%'})),
       state('hideResultDiv' , style({ opacity: 0, display: 'block', width: '20%', left: '63%'})),
       
       transition('* => *', animate('1s'))
@@ -155,6 +156,7 @@ export class AnimationPage {
   resultDivAimation1:string = "";
   resultDivAimation2:string = "";
   finalMarker:string ="";
+  intResult: number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameProvider:GameProvider, private media: Media) {
     this.firstNumber= this.navParams.get('firstName');
     this.secNumber= this.navParams.get('secNumber');
@@ -172,33 +174,70 @@ export class AnimationPage {
     this.tableCell = []; 
   }
   first(){
-    this.marker = 'firTerm';
+   // this.marker = 'firTerm';
+    setTimeout(function(){ 
+      //this.five(); 
+      this.marker = 'firTerm';
+      }, 3000);
   }
   sec(){
     //this.marker = 'firTermResult';
 
     this.firstTerm =  this.firstNumberArray.pop();
     this.secTerm = this.secNumberArray.pop();
+    this.intResult = this.firstTerm + this.secTerm;
     document.getElementById("resultMovingDiv").innerText = this.firstTerm + " + " + this.secTerm;
     this.resultDivAimation = "firresult";
+   
+
+  
     
+  }
+  checkForEnd(){
+    if (this.firstNumberArray.length == 0 && this.secNumberArray.length == 0){
+      document.getElementById("finalMark").innerText = this.intResult +"";
+      this.resultDivAimation = "final";
+      this.resultDivAimation2 = "final";
+      this.finalMarker = "final";
+      return false;
+      //this.finalMarker = "final";
+     //document.getElementById("finalMark").innerText = "1111";
+    }
+    return true;
   }
   third(){
     //this.marker = 'firTermResultFinal';
     this.resultDivAimation = "firresultFinal";
     document.getElementById("resultMovingDiv").innerText = (Number(this.firstTerm)  + Number(this.secTerm))+"";
     //this.marker = 'thiTerm';
+    
   }
 four(){
   //this.marker = 'secTerm1';
-  this.resultDivAimation = "firresultFirstCary"
-  document.getElementById("result4").innerText = (Number(this.firstTerm)  + Number(this.secTerm))+"";
-  //this.marker = 'hideMarker';
-  var num = (Number(this.firstTerm)  + Number(this.secTerm)) - 10;
-  document.getElementById("result4").innerText = num+"" ;
-  document.getElementById("resultMovingDiv").innerText =  "1";
-  //this.resultDivAimation = "firresultFirstCary";
-  //this.resultDivAimation = "hideResultDiv";
+  if(this.checkForEnd()){
+    
+    document.getElementById("result4").innerText = (Number(this.firstTerm)  + Number(this.secTerm))+"";
+    //this.marker = 'hideMarker';
+    var num = (Number(this.firstTerm)  + Number(this.secTerm)) - 10;
+    if(num > 0){
+      document.getElementById("result4").innerText = num+"" ;
+      document.getElementById("resultMovingDiv").innerText =  "1";
+      this.resultDivAimation = "firresultFirstCary";
+      setTimeout(function(){ 
+        //this.five(); 
+        this.resultDivAimation = "firresultFirstCaryMove"
+        }, 3000);
+     
+    }
+    else{
+      document.getElementById("result4").innerText = (Number(this.firstTerm)  + Number(this.secTerm))+"" ;
+    }
+
+    //this.resultDivAimation = "firresultFirstCary";
+    //this.resultDivAimation = "hideResultDiv";
+  }
+  
+  
 }
 five(){
   this.resultDivAimation = "firresultFirstCaryMove"
@@ -209,6 +248,7 @@ six(){
 seven(){
   this.firstTerm =  this.firstNumberArray.pop();
   this.secTerm = this.secNumberArray.pop();
+  this.intResult = this.firstTerm + this.secTerm + this.intResult;
   document.getElementById("resultMovingDiv1").innerText = this.firstTerm + " + " + this.secTerm + " + 1";
   this.resultDivAimation1 = 'secResultFirstCary';
 }
@@ -221,12 +261,14 @@ eight(){
 }
 
 night(){
-  this.resultDivAimation1 = "secResultFirstCary1"
-  document.getElementById("result3").innerText = (Number(this.firstTerm)+ 1 + Number(this.secTerm))+"";
-  //this.marker = 'hideMarker';
-  var num = ((Number(this.firstTerm)  + Number(this.secTerm)) + 1) - 10;
-  document.getElementById("result3").innerText = num+"" ;
-  document.getElementById("resultMovingDiv1").innerText =  "1";
+  if(this.checkForEnd()){
+      this.resultDivAimation1 = "secResultFirstCary1"
+      document.getElementById("result3").innerText = (Number(this.firstTerm)+ 1 + Number(this.secTerm))+"";
+      //this.marker = 'hideMarker';
+      var num = ((Number(this.firstTerm)  + Number(this.secTerm)) + 1) - 10;
+      document.getElementById("result3").innerText = num+"" ;
+      document.getElementById("resultMovingDiv1").innerText =  "1";
+  }
 }
 
 ten(){
@@ -258,6 +300,7 @@ fifTeen(){
   //document.getElementById("resultMovingDiv2").innerText = "1998";
   this.resultDivAimation2 = "final";
   this.finalMarker = "final";
+  document.getElementById("finalMark").innerText = "1111";
   //this.marker =  "final";
 }
 
