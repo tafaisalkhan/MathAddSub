@@ -38,7 +38,8 @@ export class DetailPage {
     
   }
   showResult(){
-    
+
+  
     var firstNumber = Number(this.inputNumber1);
     var secNumber = Number(this.inputNumber2);
     if(firstNumber != NaN || secNumber != NaN){
@@ -53,14 +54,25 @@ export class DetailPage {
   }
   showInAnimation(){
     this.result = "hidden";
-    this.navCtrl.push('AnimationPage',{
-      firstName: this.inputNumber1,
-      secNumber: this.inputNumber2
+    
+  this.completeResult = Number(this.inputNumber1) + Number(this.inputNumber2);
+     
+    this.navCtrl.push('AdditionPage',{
+      firstName: (this.inputNumber1+"").length == 1 ? this.pad(this.inputNumber1,3): (this.inputNumber1+"").length == 2 ? this.pad(this.inputNumber1,3) : this.inputNumber1+"",
+      secNumber: (this.inputNumber2+"").length == 1 ? this.pad(this.inputNumber2,3): (this.inputNumber2+"").length == 2 ? this.pad(this.inputNumber2,3) : this.inputNumber2+"",
+      finalResult: this.completeResult
     });
   }
 
   reset(){
+    
     this.result = "hidden";
+  }
+
+  pad(inputString, number){
+    var s = String(inputString);
+    while (s.length < (number || 2)) {s = "0" + s;}
+    return s;
   }
 
   showAlert(txt) {
@@ -71,4 +83,6 @@ export class DetailPage {
     });
     alert.present();
   }
+
+  
 }

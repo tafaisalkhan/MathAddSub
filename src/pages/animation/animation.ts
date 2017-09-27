@@ -179,6 +179,7 @@ export class AnimationPage {
       //this.five(); 
       this.marker = 'firTerm';
       }, 3000);
+      
   }
   sec(){
     //this.marker = 'firTermResult';
