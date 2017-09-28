@@ -57,14 +57,14 @@
           
           <td	 class="cell">
               
-            <div  [@statementContent3]="statment3" id="d2"> 
+            <div  [@statementContent3]="statment3" id="d2"  (@statementContent3.done) = "statementContent3Done($event)" (@statementContent3.start) = "statementContent3Started($event)">
                
             </div>
             </td>
 
             <td	 class="cell">
                 
-              <div  [@statementContent2]="statment2" id="d3"> 
+              <div  [@statementContent2]="statment2" id="d3"  (@statementContent2.done) = "statementContent2Done($event)" (@statementContent2.start) = "statementContent2Started($event)"> 
                  
               </div>
               </td>

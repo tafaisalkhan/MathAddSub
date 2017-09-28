@@ -358,6 +358,7 @@ twelve(){
     }
 
     if(this.totalStatementDone == this.currentStatementDone){
+      this.currentStatementDone = 0;
       document.getElementById("r3").innerText = document.getElementById("d4").innerText + " + " + document.getElementById("d8").innerText ;
       this.result1 =   "result1"
     }
@@ -371,6 +372,7 @@ twelve(){
    }
    toggleResult1Done(event){
     
+   
      if(event.toState == "result1"){
       document.getElementById("r3").innerText = this.result[0]
       this.result1 =   "result2"
@@ -388,15 +390,17 @@ twelve(){
           this.cari2 =  "true"; 
 
      }
-     this.statment1 = this.statment1 ? false : true ;
-     this.statment2 = this.statment1 ? false : true ;
+     this.statment1 =  false ;
+     this.statment2 =  true ;
      if(this.result[0] - 10 >= 0){
       document.getElementById("c2").innerText = "1"
        this.cari2 = "selectedCri2";
     }
+    //this.result1 =   "result3"
      //this.cari2 = "selectedCri2";
-     this.result1 =   "result3"
+     //this.result1 =   "result3"
      }
+     /*
      else if(event.toState == "result3"){
       //if(this.result[0] - 10 >= 0){
        //     document.getElementById("c2").innerText = "1"
@@ -410,13 +414,14 @@ twelve(){
       }
       this.result2 = "result1" ;
      }
-
+*/
    }
 
    toggleResult2Started(event){
    
   }
   toggleResult2Done(event){
+    
    
     if(event.toState == "result1"){
       document.getElementById("r2").innerText =  this.result[1];
@@ -434,13 +439,14 @@ twelve(){
       }
       this.result2 =   "result3";
       this.cari1 =  "true"; 
-      this.statment2 = this.statment2 ? false : true ;
-      this.statment3 = this.statment3 ? false : true ;
+      this.statment2 =  false ;
+      this.statment3 =  true ;
       if(this.result[1] - 10 >= 0){
         document.getElementById("c1").innerText = "1"
         this.cari1 =  "selectedCri1"; 
       }
-     }
+    }
+     /*
      else if(event.toState == "result3"){
       //this.statment3 = this.statment3 ? false : true ;
       
@@ -459,26 +465,74 @@ twelve(){
       this.result3 = "result1" ;
       
      }
-
+*/
   }
 
   toggleResult3Started(event){
-    console.log(event);
+    //console.log(event);
 
   }
   toggleResult3Done(event){
+   
     if(event.toState == "result1"){
       if(this.result[1] - 10 > 0){
         this.cari1 =  "true"; 
       }
+
       document.getElementById("r1").innerText = this.result[2]
       this.result3 =   "result2"
-      this.statment3 = this.statment3 ? false : true ;  
-      this.resultDiv = "shown"
+      this.statment3 =  false  ;  
+     
       //this.statment3 = this.statment3 ? false : true ;
     }
-   
   
+    else if(event.toState == "result2"){
+      this.resultDiv = "shown"
+    }
   
   }
+  statementContent2Done(event){
+      console.log(event);
+      if(event.toState == 1){
+        if(this.result[0] - 10 >= 0 || document.getElementById("c2").innerText == "1") {
+          document.getElementById("r2").innerText =  document.getElementById("c2").innerText + " + " + document.getElementById("d3").innerText + " + " + document.getElementById("d7").innerText ;
+        }
+        else{
+          document.getElementById("r2").innerText = document.getElementById("d3").innerText + " + " + document.getElementById("d7").innerText
+        }
+        this.result2 = "result1"
+      }
+  }
+
+  statementContent2Started(event){
+   
+  }
+
+  statementContent3Done(event){
+    console.log(event);
+    if(event.toState == 1){
+      if(this.result[1] - 10 >= 0 || document.getElementById("c1").innerText == "1"){
+        document.getElementById("c1").innerText = "1"
+        document.getElementById("r1").innerText =  document.getElementById("c1").innerText + " + " + document.getElementById("d2").innerText + " + " + document.getElementById("d6").innerText ;
+      }
+      else{
+        document.getElementById("r1").innerText = document.getElementById("d2").innerText + " + " + document.getElementById("d6").innerText 
+      }
+
+     this.result3 = "result1"
+    }
+  }
+
+  statementContent3Started(event){
+    
+  }
+
+  showResult(){
+  
+     setTimeout(function(){ 
+     
+       this.resultDiv = "shown"
+       }, 3000);
+       
+   }
 }
