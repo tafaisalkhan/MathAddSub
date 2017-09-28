@@ -54,14 +54,35 @@ export class DetailPage {
   }
   showInAnimation(){
     this.result = "hidden";
-    
-  this.completeResult = Number(this.inputNumber1) + Number(this.inputNumber2);
-     
+    var firstName;
+    var secNumber;
+    this.completeResult = Number(this.inputNumber1) + Number(this.inputNumber2);
+    var num1 = Number(this.inputNumber1)+"";
+    var num2 = Number(this.inputNumber2)+"";
+    var len;
+    if (num1.length == num2.length){
+      len = num1.length;
+      firstName = this.pad(num1 , len)
+      secNumber = this.pad(num2 , len)
+    }
+    else if(num1.length > num2.length){
+      len = num1.length;
+      firstName = this.pad(num1 , len)
+      secNumber = this.pad(num2 , len)
+    }
+    else{
+      len = num2.length;
+      firstName = this.pad(num1 , len)
+      secNumber = this.pad(num2 , len)
+    }
+
     this.navCtrl.push('AdditionPage',{
-      firstName: (this.inputNumber1+"").length == 1 ? this.pad(this.inputNumber1,3): (this.inputNumber1+"").length == 2 ? this.pad(this.inputNumber1,3) : this.inputNumber1+"",
-      secNumber: (this.inputNumber2+"").length == 1 ? this.pad(this.inputNumber2,3): (this.inputNumber2+"").length == 2 ? this.pad(this.inputNumber2,3) : this.inputNumber2+"",
-      finalResult: this.completeResult
+      firstName: firstName,
+      secNumber: secNumber,
+      finalResult: this.completeResult,
+      statmentLenght: len 
     });
+    
   }
 
   reset(){

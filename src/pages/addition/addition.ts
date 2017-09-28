@@ -98,6 +98,7 @@ import { Media, MediaObject } from '@ionic-native/media';
     state('false', style({ maxHeight: 0, padding: 0, display: 'none' })),
     state('result1' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     state('result2' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red',fontSize: 'smaller'})),
+    state('result4' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red',fontSize: 'smaller'})),
     state('result3' , style({ opacity: 1, display: 'block'})),
     // transition
     transition('* => *', animate('5000ms ease-in')),
@@ -167,183 +168,109 @@ export class AdditionPage {
   totalStatementDone: number  = 2;
   currentStatementDone: number  = 0;
   resultDiv = "hidden";
+  statmentLenght: number = 0;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameProvider:GameProvider, private media: Media) {
     this.firstNumber= this.navParams.get('firstName');
     this.secNumber= this.navParams.get('secNumber');
     this.finalResult = this.navParams.get('finalResult');
-
+    this.statmentLenght = this.navParams.get('statmentLenght');
   }
 
   ionViewDidLoad() {
-   
     this.cells = document.querySelectorAll('.cell');
-    //console.log(this.cells);
     this.loadData();
-    this.calculateResult();
-    
-    
+    this.calculateResult(); 
   }
 
-  first(){
-   // this.cari2 = "false";
-   // this.cari1 = "false";
-   // this.test = "fly";
-    //this.enterAnimation = "on";
-    this.statment1 = this.statment1 ? false : true ;
-    document.getElementById("r3").innerText = document.getElementById("d4").innerText + " + " + document.getElementById("d8").innerText ;
-    
-    //this.resultMiddle1 = this.resultMiddle1 ? false : true;
-  }
-
-  sec(){
-       
-    this.result1 =   "result1" ; //this.result1 == "true" ? "false" : "true";
-   // this.resultMiddle1 = this.resultMiddle1 ? false : true;
-   // this.cari2 =  this.cari2 == "true" ? "selectedCri1" : "true"; 
-    //this.enterAnimation = "off";
-    //this.test = "final1";
-  }
-
-  third(){
-    document.getElementById("r3").innerText = this.result[0]
-    this.result1 =   "result2"
-   // this.cari2 =  this.cari2 ? false : true ;
-   //this.result1 =  this.result1 == "true" ? "false" : "true";
-  }
-
-  four(){
-   // this.cari2 =  this.cari2 ? false : true ;
-   //document.getElementById("r3").innerText = this.result[2]
-   if(this.result[0] > 10){
-      document.getElementById("r3").innerText = (this.result[0] - 10 ) +""
-   }
-   else{
-    document.getElementById("r3").innerText = (this.result[0]  ) +""
-   }
-   this.result1 =   "result3"
-   if(this.result[0] - 10 > 0){
-      this.cari2 =  "true"; 
-   }
-   this.statment1 = this.statment1 ? false : true ;
-   this.statment2 = this.statment1 ? false : true ;
-   //this.result1 =  this.result1 == "true" ? "false" : "true";
-  }
-  five(){
-    if(this.result[0] - 10 > 0){
-  
-       this.cari2 = "selectedCri2";
-    }
-  }
  
-  six(){
-    if(this.result[0] - 10 > 0){
-      document.getElementById("r2").innerText = document.getElementById("d3").innerText + " + " + document.getElementById("d7").innerText + " + " + document.getElementById("c2").innerText;
-    }
-    else{
-      document.getElementById("r2").innerText = document.getElementById("d3").innerText + " + " + document.getElementById("d7").innerText
-    }
-    this.result2 = "result1" ;
-  }
-  seven(){
-    document.getElementById("r2").innerText =  this.result[1];
-    this.result2 = "result2" ;
-  }
-  eight(){
-    if(this.result[1] - 10 > 0){
-      document.getElementById("r2").innerText = (this.result[1] - 10 ) +""
-      this.cari1 =  "true"; 
-    }
-    else{
-      document.getElementById("r2").innerText = (this.result[1]  ) +""
-    }
-    this.result2 =   "result3";
-    
-    this.statment2 = this.statment2 ? false : true ;
-    this.statment3 = this.statment3 ? false : true ;
-  }
-
-  ninth(){
-    if(this.result[1] - 10 > 0){
-      this.cari1 =  "selectedCri1"; 
-    }
-   
-    this.statment3 = this.statment3 ? false : true ;
-    //this.statment3 = this.statment3 ? false : true ;
-  }
-  ten(){
-    if(this.result[0] - 10 > 0){
-        document.getElementById("r1").innerText = document.getElementById("d2").innerText + " + " + document.getElementById("d6").innerText + " + " + document.getElementById("c1").innerText;
-    }
-    else{
-      document.getElementById("r1").innerText = document.getElementById("d2").innerText + " + " + document.getElementById("d6").innerText 
-    }
-
-        this.result3 = "result1" ;
-    }
-eleventh(){
-  document.getElementById("r1").innerText = this.result[2]
-  this.result3 =   "result2"
-}
-
-twelve(){
-  //document.getElementById("r1").innerText = this.result[0]
-  this.statment3 = this.statment3 ? false : true ;
-  this.cari1 =  "true";
-  this.result3 =   "result3"
-}
   loadData(){
-   
-    document.getElementById("d2").innerText = this.firstNumber.substr(0,1);
-    this.firstNumberArray.push(Number(this.firstNumber.substr(0,1)))
-    document.getElementById("d3").innerText = this.firstNumber.substr(1,1);
-    this.firstNumberArray.push(Number(this.firstNumber.substr(1,1)))
-    document.getElementById("d4").innerText  =this.firstNumber.substr(2,3);
-    this.firstNumberArray.push(Number(this.firstNumber.substr(2,3)))
+   try{
+    document.getElementById("d4").innerText = this.firstNumber.substr(this.firstNumber.length-1 ,1);
+    this.firstNumberArray.push(Number(this.firstNumber.substr(this.firstNumber.length-1,1)))
+   }
+   catch(e){
 
+   }
+   try{
+     if(this.firstNumber.length-2 >= 0){
+        document.getElementById("d3").innerText = this.firstNumber.substr(this.firstNumber.length-2,1);
+        this.firstNumberArray.push(Number(this.firstNumber.substr(this.firstNumber.length-2,1)))
+     }
+   }
+   catch(e){
+
+   }
+   try{
+     if(this.firstNumber.length-3 >= 0){
+       document.getElementById("d2").innerText  =this.firstNumber.substr(this.firstNumber.length-3,1);
+       this.firstNumberArray.push(Number(this.firstNumber.substr(this.firstNumber.length-3,1)))
+     }
+   }
+   catch(e){
+
+   }
   
-    document.getElementById("d6").innerText  = this.secNumber.substr(0,1);
-    this.secNumberArray.push(Number(this.secNumber.substr(0,1)))
-    document.getElementById("d7").innerText  = this.secNumber.substr(1,1);
-    this.secNumberArray.push(Number(this.secNumber.substr(1,1)))
-    document.getElementById("d8").innerText  = this.secNumber.substr(2,3);
-    this.secNumberArray.push(Number(this.secNumber.substr(2,3)))
-    
+   try{
+     
+      document.getElementById("d8").innerText  = this.secNumber.substr(this.secNumber.length-1,1);
+      this.secNumberArray.push(Number(this.secNumber.substr(this.secNumber.length-1,1)))
+     
+   }
+   catch(e){
+
+   }
+   try{
+    if(this.secNumber.length-2 >= 0){
+      document.getElementById("d7").innerText  = this.secNumber.substr(this.secNumber.length-2,1);
+      this.secNumberArray.push(Number(this.secNumber.substr(this.secNumber.length-2,1)))
+    }
+   }
+   catch(e){
+   }
+   try{
+    if(this.secNumber.length-3 >= 0){
+      document.getElementById("d6").innerText  = this.secNumber.substr(this.secNumber.length-3,1);
+      this.secNumberArray.push(Number(this.secNumber.substr(this.secNumber.length-3,1)))
+    }
+   }
+   catch(e){
+
+   }
   }
 
    calculateResult(){
-    var temRresult  = Number(this.secNumber.substr(2,3)) + Number(this.firstNumber.substr(2,3));
-    var caridOut = 0;
-    //document.getElementById("r3").innerText = temRresult +"";
-    //document.getElementById("r3").innerText = this.secNumber.substr(2,3) + " + " + this.firstNumber.substr(2,3);
-    if (temRresult >= 10){
-      //document.getElementById("c2").innerText = "1";
-      caridOut = 1;
-      //document.getElementById("r3").innerText = (temRresult - 10) +"";
-    } 
-    else{
-      //document.getElementById("c2").innerText = "";
-      caridOut = 0;
-    }
-    this.result.push(temRresult);
-    temRresult  = Number(this.secNumber.substr(1,1)) + Number(this.firstNumber.substr(1,1) ) + Number(caridOut);
-    //document.getElementById("r2").innerText = (temRresult + caridOut) +"";
-    if (temRresult >= 10){
-      //document.getElementById("c1").innerText = "1";
-      caridOut = 1;
-      //document.getElementById("r2").innerText = ((temRresult  + caridOut) - 10) +"";
+     try{
+        var temRresult  = Number(this.secNumberArray[0]) + Number(this.firstNumberArray[0]);
+        var caridOut = 0;
+        if (temRresult >= 10){
+          caridOut = 1;
+        } 
+        else{ 
+          caridOut = 0;
+        }
+        this.result.push(temRresult);
+      }
+      catch(e){
 
-    } 
-    else{
-      //document.getElementById("c1").innerText = "";
-      caridOut = 0;
+      }
+    try{
+        temRresult  = Number(this.secNumberArray[1]) + Number(this.firstNumberArray[1] ) + Number(caridOut);
+      
+        if (temRresult >= 10){
+          caridOut = 1; 
+        } 
+        else{
+          caridOut = 0;
+        }
+        this.result.push(temRresult);
     }
-    this.result.push(temRresult);
+    catch(e){
 
-    var temRresult  = Number(this.secNumber.substr(0,1)) + Number(this.firstNumber.substr(0,1)) + Number(caridOut) ;
-    //document.getElementById("r1").innerText = (temRresult + caridOut) +""; 
+    }
+    temRresult  = Number(this.secNumberArray[2]) + Number(this.firstNumberArray[2]) + Number(caridOut) ;
     this.result.push(temRresult);
-    //
-    this.statment1 = this.statment1 ? false : true ;
+    this.statment1 =  true ;
 
    }
   
@@ -361,9 +288,7 @@ twelve(){
       this.currentStatementDone = 0;
       document.getElementById("r3").innerText = document.getElementById("d4").innerText + " + " + document.getElementById("d8").innerText ;
       this.result1 =   "result1"
-    }
-   
-    
+    } 
    }
 
    toggleResult1Started(event){
@@ -371,119 +296,107 @@ twelve(){
 
    }
    toggleResult1Done(event){
-    
-   
      if(event.toState == "result1"){
-      document.getElementById("r3").innerText = this.result[0]
+      document.getElementById("r1").innerText = this.result[0]
       this.result1 =   "result2"
      }
      else if(event.toState == "result2"){
-      if(this.result[0] >= 10){
-        document.getElementById("r3").innerText = (this.result[0] - 10 ) +""
-     }
-     else{
-      document.getElementById("r3").innerText = (this.result[0]  ) +""
-     }
-    
-     if(this.result[0] - 10 >= 0){
-          document.getElementById("c2").innerText = "1"  
-          this.cari2 =  "true"; 
 
-     }
-     this.statment1 =  false ;
-     this.statment2 =  true ;
-     if(this.result[0] - 10 >= 0){
-      document.getElementById("c2").innerText = "1"
-       this.cari2 = "selectedCri2";
-    }
-    //this.result1 =   "result3"
-     //this.cari2 = "selectedCri2";
-     //this.result1 =   "result3"
-     }
-     /*
-     else if(event.toState == "result3"){
-      //if(this.result[0] - 10 >= 0){
-       //     document.getElementById("c2").innerText = "1"
-       //      this.cari2 = "selectedCri2";
-       //   }
-      if(this.result[0] - 10 >= 0 || document.getElementById("c2").innerText == "1") {
-        document.getElementById("r2").innerText = document.getElementById("d3").innerText + " + " + document.getElementById("d7").innerText + " + " + document.getElementById("c2").innerText;
+      if(this.statmentLenght > 1){
+        document.getElementById("r3").innerText = (this.result[0]  ) +""
+        this.result1 =   "result4"
+        
       }
       else{
-        document.getElementById("r2").innerText = document.getElementById("d3").innerText + " + " + document.getElementById("d7").innerText
+        document.getElementById("r3").innerText = (this.result[0]  ) +""
+        this.statment1 =  false ;
+        this.resultDiv = "shown"
       }
-      this.result2 = "result1" ;
-     }
-*/
-   }
+    }
+    else if (event.toState == "result4"){
+      
+      if(this.result[0] >= 10){
+          document.getElementById("r3").innerText = (this.result[0] - 10 ) +""
+      }
+      else{
+        document.getElementById("r3").innerText = (this.result[0]  ) +""
+      }
+      
+      
 
-   toggleResult2Started(event){
+      if(this.result[0] - 10 >= 0){
+            document.getElementById("c2").innerText = "1"  
+            this.cari2 =  "true"; 
+
+      }
+      this.statment1 =  false ;
+      this.statment2 =  true ;
+      if(this.result[0] - 10 >= 0){
+        document.getElementById("c2").innerText = "1"
+        this.cari2 = "selectedCri2";
+      }
+    }
+   
+  }
+
+  toggleResult2Started(event){
    
   }
   toggleResult2Done(event){
-    
-   
     if(event.toState == "result1"){
       document.getElementById("r2").innerText =  this.result[1];
       this.result2 = "result2" ;
      }
      else if(event.toState == "result2"){
-      if(this.result[1] - 10 >= 0){
-        document.getElementById("c1").innerText = "1"
-        document.getElementById("r2").innerText = (this.result[1] - 10 ) +""
-        this.cari2 =  "true"; 
-      }
-      else{
+      if(this.statmentLenght > 2){
         document.getElementById("r2").innerText = (this.result[1]  ) +""
-        this.cari2 =  "true";
-      }
-      this.result2 =   "result3";
-      this.cari1 =  "true"; 
-      this.statment2 =  false ;
-      this.statment3 =  true ;
-      if(this.result[1] - 10 >= 0){
-        document.getElementById("c1").innerText = "1"
-        this.cari1 =  "selectedCri1"; 
+        this.result2 =   "result4"
+        }
+      else
+      {
+        document.getElementById("r2").innerText = (this.result[1]  ) +""
+        this.statment2 =  false ;
+        this.resultDiv = "shown"
+
       }
     }
-     /*
-     else if(event.toState == "result3"){
-      //this.statment3 = this.statment3 ? false : true ;
-      
-      
-      if(this.result[1] - 10 >= 0 || document.getElementById("c1").innerText == "1"){
-        document.getElementById("c1").innerText = "1"
-        document.getElementById("r1").innerText = document.getElementById("d2").innerText + " + " + document.getElementById("d6").innerText + " + " + document.getElementById("c1").innerText;
-      }
-      else{
-        document.getElementById("r1").innerText = document.getElementById("d2").innerText + " + " + document.getElementById("d6").innerText 
-      }
-
-     
-      
-      
-      this.result3 = "result1" ;
-      
-     }
-*/
+    else if(event.toState == "result4"){
+      if(this.result[1] - 10 >= 0){
+          document.getElementById("c1").innerText = "1"
+          document.getElementById("r2").innerText = (this.result[1] - 10 ) +""
+          this.cari2 = "true"; 
+        }
+        else{
+          document.getElementById("r2").innerText = (this.result[1]  ) +""
+          this.cari2 = "true";
+        }
+        this.result2 = "result3";
+        this.cari1 = "true"; 
+        this.statment2 =  false ;
+        this.statment3 =  true ;
+        if(this.result[1] - 10 >= 0){
+          document.getElementById("c1").innerText = "1"
+          this.cari1 =  "selectedCri1"; 
+        }
+    }
+   
   }
 
   toggleResult3Started(event){
-    //console.log(event);
+   
 
   }
   toggleResult3Done(event){
    
     if(event.toState == "result1"){
       if(this.result[1] - 10 > 0){
-        this.cari1 =  "true"; 
+        this.cari1 = "true"; 
       }
 
       document.getElementById("r1").innerText = this.result[2]
-      this.result3 =   "result2"
-      this.statment3 =  false  ;  
-     
-      //this.statment3 = this.statment3 ? false : true ;
+      this.result3 = "result2"
+      this.statment3 = false  ;  
+
     }
   
     else if(event.toState == "result2"){
@@ -527,12 +440,4 @@ twelve(){
     
   }
 
-  showResult(){
-  
-     setTimeout(function(){ 
-     
-       this.resultDiv = "shown"
-       }, 3000);
-       
-   }
 }
