@@ -75,47 +75,47 @@ import { Media, MediaObject } from '@ionic-native/media';
     transition('active => inactive', animate('100ms ease-out'))
   ]),
   trigger('statementContent1', [
-    state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
+    state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     state('false', style({ opacity: 1, display: 'block'})),
     // transition
     transition('* => *', animate('5000ms')),
   ]),
   trigger('statementContent2', [
-    state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
+    state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     state('false', style({ opacity: 1, display: 'block'})),
     // transition
     transition('* => *', animate('5000ms')),
   ]),
   trigger('statementContent3', [
-    state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
+    state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     state('false', style({ opacity: 1, display: 'block'})),
     // transition
     transition('* => *', animate('5000ms')),
   ]),
 
   trigger('toggleResult1', [
-    state('true' , style({  })),
+    state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
     state('false', style({ maxHeight: 0, padding: 0, display: 'none' })),
-    state('result1' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
-    state('result2' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
+    state('result1' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
+    state('result2' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red',fontSize: 'smaller'})),
     state('result3' , style({ opacity: 1, display: 'block'})),
     // transition
-    transition('* => *', animate('5000ms')),
+    transition('* => *', animate('5000ms ease-in')),
   ]),
   trigger('toggleResult2', [
-    state('true' , style({  })),
+    state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
     state('false', style({ maxHeight: 0, padding: 0, display: 'none' })),
-    state('result1' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
-    state('result2' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
+    state('result1' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
+    state('result2' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     state('result3' , style({ opacity: 1, display: 'block'})),
     // transition
     transition('* => *', animate('5000ms')),
   ]),
   trigger('toggleResult3', [
-    state('true' , style({  })),
+    state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
     state('false', style({ maxHeight: 0, padding: 0, display: 'none' })),
-    state('result1' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
-    state('result2' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
+    state('result1' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
+    state('result2' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     state('result3' , style({ opacity: 1, display: 'block'})),
     // transition
     // transition
@@ -124,14 +124,14 @@ import { Media, MediaObject } from '@ionic-native/media';
   trigger('toggleCari1', [
     state('true' , style({  })),
     state('false', style({ maxHeight: 0, padding: 0, display: 'none' })),
-    state('selectedCri1' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
+    state('selectedCri1' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     // transition
     transition('* => *', animate('5000ms')),
   ]),
   trigger('toggleCari2', [
     state('true' , style({  })),
     state('false', style({ maxHeight: 0, padding: 0, display: 'none' })),
-    state('selectedCri2' , style({ opacity: 1, display: 'block',  color: 'white',  'border': 'solid', 'border-color': 'red'})),
+    state('selectedCri2' , style({ opacity: 1, display: 'block',  color: 'white',  'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     // transition
     transition('* => *', animate('5000ms')),
   ]),
@@ -154,9 +154,9 @@ export class AdditionPage {
   statment1: boolean = false;
   statment2: boolean = false;
   statment3: boolean = false;
-  result1: string = "0";
-  result2: string = "0";
-  result3: string = "0";
+  result1: string = "false";
+  result2: string = "false";
+  result3: string = "false";
   cari1: string = "false";
   cari2: string = "false";
   resultMiddle1: boolean = false;
@@ -352,7 +352,7 @@ twelve(){
    }
  
    statementContent1Done(event){
- 
+   
     if(event.phaseName == "done"){
       this.currentStatementDone ++;
     }

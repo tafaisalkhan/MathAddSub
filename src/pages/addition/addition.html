@@ -114,7 +114,7 @@
   </table>
 
 <table class="lastTable">
-    <tr style="height:240px"> 
+    <tr > 
         <td >
             <div   > 
                
@@ -164,12 +164,14 @@
 </ion-card-content>
 </ion-card>
 
-<div  class="display-result" [@visibilityResult] = "resultDiv" >
-		<div  style="font-size:-webkit-xxx-large"  >
-			Result: {{finalResult}}
-				</div>
-	
-  </div>
 
+  <ion-card class="display-result" [@visibilityResult] = "resultDiv">
+<ion-card-content>
+
+  <div  style="font-size:-webkit-xxx-large"  >
+    Result: {{finalResult}}
+      </div>
+</ion-card-content>
+</ion-card>
 
 </ion-content>
