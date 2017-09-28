@@ -78,19 +78,19 @@ import { Media, MediaObject } from '@ionic-native/media';
     state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
     state('false', style({ opacity: 1, display: 'block'})),
     // transition
-    transition('* => *', animate('1000ms')),
+    transition('* => *', animate('5000ms')),
   ]),
   trigger('statementContent2', [
     state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
     state('false', style({ opacity: 1, display: 'block'})),
     // transition
-    transition('* => *', animate('1000ms')),
+    transition('* => *', animate('5000ms')),
   ]),
   trigger('statementContent3', [
     state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
     state('false', style({ opacity: 1, display: 'block'})),
     // transition
-    transition('* => *', animate('1000ms')),
+    transition('* => *', animate('5000ms')),
   ]),
 
   trigger('toggleResult1', [
@@ -100,7 +100,7 @@ import { Media, MediaObject } from '@ionic-native/media';
     state('result2' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
     state('result3' , style({ opacity: 1, display: 'block'})),
     // transition
-    transition('* => *', animate('1000ms')),
+    transition('* => *', animate('5000ms')),
   ]),
   trigger('toggleResult2', [
     state('true' , style({  })),
@@ -109,7 +109,7 @@ import { Media, MediaObject } from '@ionic-native/media';
     state('result2' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
     state('result3' , style({ opacity: 1, display: 'block'})),
     // transition
-    transition('* => *', animate('300ms')),
+    transition('* => *', animate('5000ms')),
   ]),
   trigger('toggleResult3', [
     state('true' , style({  })),
@@ -119,22 +119,27 @@ import { Media, MediaObject } from '@ionic-native/media';
     state('result3' , style({ opacity: 1, display: 'block'})),
     // transition
     // transition
-    transition('* => *', animate('300ms')),
+    transition('* => *', animate('5000ms')),
   ]),
   trigger('toggleCari1', [
     state('true' , style({  })),
     state('false', style({ maxHeight: 0, padding: 0, display: 'none' })),
     state('selectedCri1' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
     // transition
-    transition('* => *', animate('300ms')),
+    transition('* => *', animate('5000ms')),
   ]),
   trigger('toggleCari2', [
     state('true' , style({  })),
     state('false', style({ maxHeight: 0, padding: 0, display: 'none' })),
     state('selectedCri2' , style({ opacity: 1, display: 'block',  color: 'white',  'border': 'solid', 'border-color': 'red'})),
     // transition
-    transition('* => *', animate('300ms')),
-  ])
+    transition('* => *', animate('5000ms')),
+  ]),
+  trigger('visibilityResult', [
+    state('shown' , style({ opacity: 1, display: 'block' , top: '40%', transform:'translateY(0%)'})),
+    state('hidden', style({ opacity: 1, display: 'none' , transform:'translateY(-800%)' })),
+    transition('* => *', animate('1s'))
+  ]),
   ]
 })
 
@@ -161,6 +166,7 @@ export class AdditionPage {
   finalResult: string ;
   totalStatementDone: number  = 2;
   currentStatementDone: number  = 0;
+  resultDiv = "hidden";
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameProvider:GameProvider, private media: Media) {
     this.firstNumber= this.navParams.get('firstName');
     this.secNumber= this.navParams.get('secNumber');
@@ -179,6 +185,8 @@ export class AdditionPage {
   }
 
   first(){
+   // this.cari2 = "false";
+   // this.cari1 = "false";
    // this.test = "fly";
     //this.enterAnimation = "on";
     this.statment1 = this.statment1 ? false : true ;
@@ -251,7 +259,7 @@ export class AdditionPage {
     this.result2 =   "result3";
     
     this.statment2 = this.statment2 ? false : true ;
-    //this.statment3 = this.statment3 ? false : true ;
+    this.statment3 = this.statment3 ? false : true ;
   }
 
   ninth(){
@@ -308,7 +316,7 @@ twelve(){
     //document.getElementById("r3").innerText = temRresult +"";
     //document.getElementById("r3").innerText = this.secNumber.substr(2,3) + " + " + this.firstNumber.substr(2,3);
     if (temRresult >= 10){
-      document.getElementById("c2").innerText = "1";
+      //document.getElementById("c2").innerText = "1";
       caridOut = 1;
       //document.getElementById("r3").innerText = (temRresult - 10) +"";
     } 
@@ -320,7 +328,7 @@ twelve(){
     temRresult  = Number(this.secNumber.substr(1,1)) + Number(this.firstNumber.substr(1,1) ) + Number(caridOut);
     //document.getElementById("r2").innerText = (temRresult + caridOut) +"";
     if (temRresult >= 10){
-      document.getElementById("c1").innerText = "1";
+      //document.getElementById("c1").innerText = "1";
       caridOut = 1;
       //document.getElementById("r2").innerText = ((temRresult  + caridOut) - 10) +"";
 
@@ -334,7 +342,8 @@ twelve(){
     var temRresult  = Number(this.secNumber.substr(0,1)) + Number(this.firstNumber.substr(0,1)) + Number(caridOut) ;
     //document.getElementById("r1").innerText = (temRresult + caridOut) +""; 
     this.result.push(temRresult);
-    //this.statment1 = this.statment1 ? false : true ;
+    //
+    this.statment1 = this.statment1 ? false : true ;
 
    }
   
@@ -343,12 +352,13 @@ twelve(){
    }
  
    statementContent1Done(event){
-    
+ 
     if(event.phaseName == "done"){
       this.currentStatementDone ++;
     }
 
     if(this.totalStatementDone == this.currentStatementDone){
+      document.getElementById("r3").innerText = document.getElementById("d4").innerText + " + " + document.getElementById("d8").innerText ;
       this.result1 =   "result1"
     }
    
@@ -356,11 +366,118 @@ twelve(){
    }
 
    toggleResult1Started(event){
-     console.log(event);
+    
 
    }
    toggleResult1Done(event){
-     console.log(event);
+    
+     if(event.toState == "result1"){
+      document.getElementById("r3").innerText = this.result[0]
+      this.result1 =   "result2"
+     }
+     else if(event.toState == "result2"){
+      if(this.result[0] >= 10){
+        document.getElementById("r3").innerText = (this.result[0] - 10 ) +""
+     }
+     else{
+      document.getElementById("r3").innerText = (this.result[0]  ) +""
+     }
+    
+     if(this.result[0] - 10 >= 0){
+          document.getElementById("c2").innerText = "1"  
+          this.cari2 =  "true"; 
+
+     }
+     this.statment1 = this.statment1 ? false : true ;
+     this.statment2 = this.statment1 ? false : true ;
+     if(this.result[0] - 10 >= 0){
+      document.getElementById("c2").innerText = "1"
+       this.cari2 = "selectedCri2";
+    }
+     //this.cari2 = "selectedCri2";
+     this.result1 =   "result3"
+     }
+     else if(event.toState == "result3"){
+      //if(this.result[0] - 10 >= 0){
+       //     document.getElementById("c2").innerText = "1"
+       //      this.cari2 = "selectedCri2";
+       //   }
+      if(this.result[0] - 10 >= 0){
+        document.getElementById("r2").innerText = document.getElementById("d3").innerText + " + " + document.getElementById("d7").innerText + " + " + document.getElementById("c2").innerText;
+      }
+      else{
+        document.getElementById("r2").innerText = document.getElementById("d3").innerText + " + " + document.getElementById("d7").innerText
+      }
+      this.result2 = "result1" ;
+     }
 
    }
+
+   toggleResult2Started(event){
+   
+  }
+  toggleResult2Done(event){
+   
+    if(event.toState == "result1"){
+      document.getElementById("r2").innerText =  this.result[1];
+      this.result2 = "result2" ;
+     }
+     else if(event.toState == "result2"){
+      if(this.result[1] - 10 >= 0){
+        document.getElementById("c1").innerText = "1"
+        document.getElementById("r2").innerText = (this.result[1] - 10 ) +""
+        this.cari2 =  "true"; 
+      }
+      else{
+        document.getElementById("r2").innerText = (this.result[1]  ) +""
+      }
+      this.result2 =   "result3";
+      this.cari1 =  "true"; 
+      this.statment2 = this.statment2 ? false : true ;
+      this.statment3 = this.statment3 ? false : true ;
+      if(this.result[1] - 10 >= 0){
+        document.getElementById("c1").innerText = "1"
+        this.cari1 =  "selectedCri1"; 
+      }
+     }
+     else if(event.toState == "result3"){
+      //this.statment3 = this.statment3 ? false : true ;
+      
+      
+      if(this.result[0] - 10 >= 0){
+        document.getElementById("c1").innerText = "1"
+        document.getElementById("r1").innerText = document.getElementById("d2").innerText + " + " + document.getElementById("d6").innerText + " + " + document.getElementById("c1").innerText;
+      }
+      else{
+        document.getElementById("r1").innerText = document.getElementById("d2").innerText + " + " + document.getElementById("d6").innerText 
+      }
+
+     
+      
+      
+      this.result3 = "result1" ;
+      
+     }
+
+  }
+
+  toggleResult3Started(event){
+    console.log(event);
+
+  }
+  toggleResult3Done(event){
+    if(event.toState == "result1"){
+      if(this.result[1] - 10 >= 0){
+        this.cari1 =  "true"; 
+      }
+      document.getElementById("r1").innerText = this.result[2]
+      this.result3 =   "result2"
+      this.statment3 = this.statment3 ? false : true ;
+      this.resultDiv = "shown"
+      //this.statment3 = this.statment3 ? false : true ;
+    }
+   
+  
+  
+  }
 }

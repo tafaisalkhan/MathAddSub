@@ -29,12 +29,12 @@
           
           </td>
           <td  >
-              <div [@toggleCari1]="cari1" id="c1">
+              <div [@toggleCari1]="cari1" class="cari" id="c1">
                  
                 </div>
           </td>
           <td  >
-              <div [@toggleCari2]="cari2" id="c2">
+              <div [@toggleCari2]="cari2" class="cari" id="c2">
                  
                 </div>
           </td>
@@ -114,20 +114,20 @@
   </table>
 
 <table class="lastTable">
-    <tr >
+    <tr style="height:240px"> 
         <td >
             <div   > 
                
              </div>
         </td>
         <td  >
-            <div  [@toggleResult3]="result3"  id="r1"> 
+            <div  [@toggleResult3]="result3"  (@toggleResult3.done) = "toggleResult3Done($event)" (@toggleResult3.start) = "toggleResult3Started($event)" id="r1"> 
                 
              </div>
 
         </td>
         <td  >
-        <div   [@toggleResult2]="result2" id="r2"> 
+        <div   [@toggleResult2]="result2" (@toggleResult2.done) = "toggleResult2Done($event)" (@toggleResult2.start) = "toggleResult2Started($event)"  id="r2"> 
            
          </div>
         </td>
@@ -139,7 +139,7 @@
         </td>
       </tr>
  </table>   
-
+<!--
  <button ion-button (click)="calculateResult()">Show Result</button>
 
 
@@ -159,12 +159,17 @@
  <button ion-button (click)="fourTeen()">Fourteen</button>
  <button ion-button (click)="fifTeen()">fifteen</button>
  
-
+-->
 	
 </ion-card-content>
 </ion-card>
 
-
+<div  class="display-result" [@visibilityResult] = "resultDiv" >
+		<div  style="font-size:-webkit-xxx-large"  >
+			Result: {{finalResult}}
+				</div>
+	
+  </div>
 
 
 </ion-content>
