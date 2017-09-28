@@ -136,7 +136,7 @@ import { Media, MediaObject } from '@ionic-native/media';
     transition('* => *', animate('5000ms')),
   ]),
   trigger('visibilityResult', [
-    state('shown' , style({ opacity: 1, display: 'block' , top: '40%', transform:'translateY(0%)'})),
+    state('shown' , style({ opacity: 1, display: 'block' , top: '52%',width:'85%', transform:'translateY(0%)'})),
     state('hidden', style({ opacity: 1, display: 'none' , transform:'translateY(-800%)' })),
     transition('* => *', animate('1s'))
   ]),
@@ -402,7 +402,7 @@ twelve(){
        //     document.getElementById("c2").innerText = "1"
        //      this.cari2 = "selectedCri2";
        //   }
-      if(this.result[0] - 10 >= 0){
+      if(this.result[0] - 10 >= 0 || document.getElementById("c2").innerText == "1") {
         document.getElementById("r2").innerText = document.getElementById("d3").innerText + " + " + document.getElementById("d7").innerText + " + " + document.getElementById("c2").innerText;
       }
       else{
@@ -430,6 +430,7 @@ twelve(){
       }
       else{
         document.getElementById("r2").innerText = (this.result[1]  ) +""
+        this.cari2 =  "true";
       }
       this.result2 =   "result3";
       this.cari1 =  "true"; 
@@ -444,7 +445,7 @@ twelve(){
       //this.statment3 = this.statment3 ? false : true ;
       
       
-      if(this.result[0] - 10 >= 0){
+      if(this.result[1] - 10 >= 0 || document.getElementById("c1").innerText == "1"){
         document.getElementById("c1").innerText = "1"
         document.getElementById("r1").innerText = document.getElementById("d2").innerText + " + " + document.getElementById("d6").innerText + " + " + document.getElementById("c1").innerText;
       }
@@ -467,12 +468,12 @@ twelve(){
   }
   toggleResult3Done(event){
     if(event.toState == "result1"){
-      if(this.result[1] - 10 >= 0){
+      if(this.result[1] - 10 > 0){
         this.cari1 =  "true"; 
       }
       document.getElementById("r1").innerText = this.result[2]
       this.result3 =   "result2"
-      this.statment3 = this.statment3 ? false : true ;
+      this.statment3 = this.statment3 ? false : true ;  
       this.resultDiv = "shown"
       //this.statment3 = this.statment3 ? false : true ;
     }
