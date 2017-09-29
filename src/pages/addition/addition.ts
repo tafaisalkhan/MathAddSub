@@ -78,19 +78,19 @@ import { Media, MediaObject } from '@ionic-native/media';
     state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     state('false', style({ opacity: 1, display: 'block'})),
     // transition
-    transition('* => *', animate('5000ms')),
+    transition('* => *', animate('3000ms')),
   ]),
   trigger('statementContent2', [
     state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     state('false', style({ opacity: 1, display: 'block'})),
     // transition
-    transition('* => *', animate('5000ms')),
+    transition('* => *', animate('3000ms')),
   ]),
   trigger('statementContent3', [
     state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     state('false', style({ opacity: 1, display: 'block'})),
     // transition
-    transition('* => *', animate('5000ms')),
+    transition('* => *', animate('3000ms')),
   ]),
 
   trigger('toggleResult1', [
@@ -101,7 +101,7 @@ import { Media, MediaObject } from '@ionic-native/media';
     state('result4' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red',fontSize: 'smaller'})),
     state('result3' , style({ opacity: 1, display: 'block'})),
     // transition
-    transition('* => *', animate('5000ms ease-in')),
+    transition('* => *', animate('3000ms ease-in')),
   ]),
   trigger('toggleResult2', [
     state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
@@ -110,7 +110,7 @@ import { Media, MediaObject } from '@ionic-native/media';
     state('result2' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     state('result3' , style({ opacity: 1, display: 'block'})),
     // transition
-    transition('* => *', animate('5000ms')),
+    transition('* => *', animate('3000ms')),
   ]),
   trigger('toggleResult3', [
     state('true' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red'})),
@@ -120,21 +120,21 @@ import { Media, MediaObject } from '@ionic-native/media';
     state('result3' , style({ opacity: 1, display: 'block'})),
     // transition
     // transition
-    transition('* => *', animate('5000ms')),
+    transition('* => *', animate('3000ms')),
   ]),
   trigger('toggleCari1', [
     state('true' , style({  })),
     state('false', style({ maxHeight: 0, padding: 0, display: 'none' })),
     state('selectedCri1' , style({ opacity: 1, display: 'block', color: 'white', 'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     // transition
-    transition('* => *', animate('5000ms')),
+    transition('* => *', animate('3000ms')),
   ]),
   trigger('toggleCari2', [
     state('true' , style({  })),
     state('false', style({ maxHeight: 0, padding: 0, display: 'none' })),
     state('selectedCri2' , style({ opacity: 1, display: 'block',  color: 'white',  'border': 'solid', 'border-color': 'red', fontSize: 'smaller'})),
     // transition
-    transition('* => *', animate('5000ms')),
+    transition('* => *', animate('3000ms')),
   ]),
   trigger('visibilityResult', [
     state('shown' , style({ opacity: 1, display: 'block' , top: '52%',width:'85%', transform:'translateY(0%)'})),

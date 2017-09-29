@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { GameProvider } from '../providers/game/game';
 import { GamelogicProvider } from '../providers/gamelogic/gamelogic';
+import 'web-animations-js/web-animations.min';
 
 @NgModule({
   declarations: [
